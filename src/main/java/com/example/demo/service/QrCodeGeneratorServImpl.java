@@ -7,9 +7,6 @@ import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
@@ -57,15 +54,16 @@ public class QrCodeGeneratorServImpl implements QrCodeGeneratorService {
 		
 		byte[] byteArray = baos.toByteArray();
 		
-		  // Get resources path (works during development)
-	    Path resourceDir = Paths.get("src", "main", "resources", "qrcodes");
-	    Files.createDirectories(resourceDir); // Ensure the directory exists
-
-	    // Save file with timestamp to avoid overwrite
-	    String fileName = text.replaceAll("\\W+", "_") + "_" + System.currentTimeMillis() + ".png";
-	    Path outputPath = resourceDir.resolve(fileName);
-	    	
-		Files.write(outputPath,byteArray);
+		/* This code will create a directory and will saved QR codes within it */
+//		  // Get resources path (works during development)
+//	    Path resourceDir = Paths.get("src", "main", "resources", "qrcodes");
+//	    Files.createDirectories(resourceDir); // Ensure the directory exists
+//
+//	    // Save file with timestamp to avoid overwrite
+//	    String fileName = text.replaceAll("\\W+", "_") + "_" + System.currentTimeMillis() + ".png";
+//	    Path outputPath = resourceDir.resolve(fileName);
+//	    	
+//		Files.write(outputPath,byteArray);
 		
 		return byteArray;
 		
